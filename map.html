@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Harta Live Avioane</title>
+
+    <!-- Biblioteci Leaflet -->
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"/>
+
+    <style>
+        #map { height: 100vh; }
+        .plane-icon {
+            transform-origin: center;
+        }
+    </style>
+</head>
+<body>
+    <div id="map"></div>
+
+    <script>
+        var map = L.map('map').setView([44.4268, 26.1025], 8); // București
+
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; OpenStreetMap contributors'
+        }).addTo(map);
+
+        var aircraftMarkers = {};  // Stocăm markerii activi pentru actualizare
+
+        function getPlaneIcon(track) {
+            return L.divIcon({
+                html: `<img src="/icons/plane_icon.png" class="plane-icon" style="
+                    width: 30px;
+                    height: 30px;
+                    background: transparent;
+                    border: none;
+                    transform: rotate(${track}deg);
+                    filter: drop-shadow(0px 0px 2px rgba(0, 0, 0, 0.5));
+                ">`,
+                className: "",
+                iconSize: [30, 30],
+                iconAnchor: [15, 15]
+            });
+        }
+
+        function updateAircraft() {
+            fetch('/aircraft')
+                .then(response => response.json())
+                .then(data => {
+                    // Ștergem markerii avioanelor care nu mai sunt în detecție
+                    Object.keys(aircraftMarkers).forEach(callsign => {
+                        if (!data.some(ac => ac.callsign === callsign)) {
+                            map.removeLayer(aircraftMarkers[callsign]);
+                            delete aircraftMarkers[callsign];
+                        }
+                    });
+
+                    data.forEach(aircraft => {
+                        let { lat, lon, callsign, altitude, speed, track } = aircraft;
+                        if (!lat || !lon) return;
+
+                        let speedKmH = speed !== "N/A" ? (speed * 1.852).toFixed(1) : "N/A"; // Conversie din kt în km/h
+
+                        let popupContent = `
+                            <b>Callsign:</b> ${callsign}<br>
+                            <b>Altitudine:</b> ${altitude} ft<br>
+                            <b>Viteză:</b> ${speed} kt (${speedKmH} km/h)<br>
+                            <b>Direcție:</b> ${track}°
+                        `;
+
+                        if (aircraftMarkers[callsign]) {
+                            aircraftMarkers[callsign].setLatLng([lat, lon]);
+                            aircraftMarkers[callsign].setIcon(getPlaneIcon(track));
+                            aircraftMarkers[callsign].bindPopup(popupContent);
+                        } else {
+                            aircraftMarkers[callsign] = L.marker([lat, lon], {
+                                icon: getPlaneIcon(track)
+                            }).bindPopup(popupContent).addTo(map);
+                        }
+                    });
+                })
+                .catch(error => console.error("Eroare la obținerea datelor aeronavelor:", error));
+        }
+
+        updateAircraft();
+        setInterval(updateAircraft, 100); // Actualizare la fiecare 5 secunde
+    </script>
+</body>
+</html>

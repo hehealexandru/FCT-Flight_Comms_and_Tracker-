@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_2f079df704eaa51819f394632a86d472 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+        
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_2f079df704eaa51819f394632a86d472" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_2f079df704eaa51819f394632a86d472 = L.map(
+                "map_2f079df704eaa51819f394632a86d472",
+                {
+                    center: [44.4268, 26.1025],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 8,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_50b13f388747d7ff85f996f91847a70c = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 19,
+  "maxNativeZoom": 19,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_50b13f388747d7ff85f996f91847a70c.addTo(map_2f079df704eaa51819f394632a86d472);
+        
+    
+            var marker_b18d9d896e8746dfa969b971b43f4fd1 = L.marker(
+                [44.934952, 25.585589],
+                {
+}
+            ).addTo(map_2f079df704eaa51819f394632a86d472);
+        
+    
+            var icon_4eea9870f7eed0a1539597805f1ff23f = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "plane",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_b18d9d896e8746dfa969b971b43f4fd1.setIcon(icon_4eea9870f7eed0a1539597805f1ff23f);
+        
+    
+        var popup_1f9a65e6985324bc24da4bde9f566126 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_59aecadc19a11c892e14e3816cb7473b = $(`<div id="html_59aecadc19a11c892e14e3816cb7473b" style="width: 100.0%; height: 100.0%;">                 <b>Callsign:</b> AAR501<br>                 <b>Altitudine:</b> 40000 ft<br>                 <b>Viteză:</b> 455 kt<br>                 <b>Direcție:</b> 299°                 </div>`)[0];
+                popup_1f9a65e6985324bc24da4bde9f566126.setContent(html_59aecadc19a11c892e14e3816cb7473b);
+            
+        
+
+        marker_b18d9d896e8746dfa969b971b43f4fd1.bindPopup(popup_1f9a65e6985324bc24da4bde9f566126)
+        ;
+
+        
+    
+    
+            marker_b18d9d896e8746dfa969b971b43f4fd1.bindTooltip(
+                `<div>
+                     AAR501
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_883317afd960cfe273b4477b464a3f58 = L.marker(
+                [45.482025, 25.287192],
+                {
+}
+            ).addTo(map_2f079df704eaa51819f394632a86d472);
+        
+    
+            var icon_760ceca0c1d7d51ef08cd85d5b16bad9 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "plane",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_883317afd960cfe273b4477b464a3f58.setIcon(icon_760ceca0c1d7d51ef08cd85d5b16bad9);
+        
+    
+        var popup_8301720f4b1a700a253fe43fd2241b45 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_ca51c5ef5dc4d17f96cb552f7b0cf05a = $(`<div id="html_ca51c5ef5dc4d17f96cb552f7b0cf05a" style="width: 100.0%; height: 100.0%;">                 <b>Callsign:</b> TKJ14N<br>                 <b>Altitudine:</b> 38000 ft<br>                 <b>Viteză:</b> 429 kt<br>                 <b>Direcție:</b> 321°                 </div>`)[0];
+                popup_8301720f4b1a700a253fe43fd2241b45.setContent(html_ca51c5ef5dc4d17f96cb552f7b0cf05a);
+            
+        
+
+        marker_883317afd960cfe273b4477b464a3f58.bindPopup(popup_8301720f4b1a700a253fe43fd2241b45)
+        ;
+
+        
+    
+    
+            marker_883317afd960cfe273b4477b464a3f58.bindTooltip(
+                `<div>
+                     TKJ14N
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_afb365305030421e60d74ad18e19eb9f = L.marker(
+                [46.045517, 24.495667],
+                {
+}
+            ).addTo(map_2f079df704eaa51819f394632a86d472);
+        
+    
+            var icon_b59c44229946037fee55d44bc61a4f42 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "plane",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_afb365305030421e60d74ad18e19eb9f.setIcon(icon_b59c44229946037fee55d44bc61a4f42);
+        
+    
+        var popup_5265e547452d8f68aca5df946448de55 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_416ba05f643cb910900f74e56b50b4a0 = $(`<div id="html_416ba05f643cb910900f74e56b50b4a0" style="width: 100.0%; height: 100.0%;">                 <b>Callsign:</b> <br>                 <b>Altitudine:</b> 35000 ft<br>                 <b>Viteză:</b> 460 kt<br>                 <b>Direcție:</b> 144°                 </div>`)[0];
+                popup_5265e547452d8f68aca5df946448de55.setContent(html_416ba05f643cb910900f74e56b50b4a0);
+            
+        
+
+        marker_afb365305030421e60d74ad18e19eb9f.bindPopup(popup_5265e547452d8f68aca5df946448de55)
+        ;
+
+        
+    
+    
+            marker_afb365305030421e60d74ad18e19eb9f.bindTooltip(
+                `<div>
+                     
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_9057af9e381e7f9a48c9973cbdf37621 = L.marker(
+                [44.995102, 25.52536],
+                {
+}
+            ).addTo(map_2f079df704eaa51819f394632a86d472);
+        
+    
+            var icon_e28743410ed9d406bc104e4fc4f4595b = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "plane",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_9057af9e381e7f9a48c9973cbdf37621.setIcon(icon_e28743410ed9d406bc104e4fc4f4595b);
+        
+    
+        var popup_269c767c472d07de79e03f53262f17a3 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_00da442a922bb31bbd39eb80c9e411ba = $(`<div id="html_00da442a922bb31bbd39eb80c9e411ba" style="width: 100.0%; height: 100.0%;">                 <b>Callsign:</b> CLX14ZX<br>                 <b>Altitudine:</b> 36000 ft<br>                 <b>Viteză:</b> 446 kt<br>                 <b>Direcție:</b> 299°                 </div>`)[0];
+                popup_269c767c472d07de79e03f53262f17a3.setContent(html_00da442a922bb31bbd39eb80c9e411ba);
+            
+        
+
+        marker_9057af9e381e7f9a48c9973cbdf37621.bindPopup(popup_269c767c472d07de79e03f53262f17a3)
+        ;
+
+        
+    
+    
+            marker_9057af9e381e7f9a48c9973cbdf37621.bindTooltip(
+                `<div>
+                     CLX14ZX
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_4417b56ac540fc61528176da4a3f0efa = L.marker(
+                [44.869308, 25.419355],
+                {
+}
+            ).addTo(map_2f079df704eaa51819f394632a86d472);
+        
+    
+            var icon_0bb8db12d86b9e07c23a84db56fdb588 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "plane",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_4417b56ac540fc61528176da4a3f0efa.setIcon(icon_0bb8db12d86b9e07c23a84db56fdb588);
+        
+    
+        var popup_99a19a8e44547e655083525f508f0c9b = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_102e2d7fc51e20297b4e3128aa9a49c3 = $(`<div id="html_102e2d7fc51e20297b4e3128aa9a49c3" style="width: 100.0%; height: 100.0%;">                 <b>Callsign:</b> SWR146<br>                 <b>Altitudine:</b> 37000 ft<br>                 <b>Viteză:</b> 496 kt<br>                 <b>Direcție:</b> 116°                 </div>`)[0];
+                popup_99a19a8e44547e655083525f508f0c9b.setContent(html_102e2d7fc51e20297b4e3128aa9a49c3);
+            
+        
+
+        marker_4417b56ac540fc61528176da4a3f0efa.bindPopup(popup_99a19a8e44547e655083525f508f0c9b)
+        ;
+
+        
+    
+    
+            marker_4417b56ac540fc61528176da4a3f0efa.bindTooltip(
+                `<div>
+                     SWR146
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_d23b1810e70fb4a43320ffe36fa05662 = L.marker(
+                [45.368647, 25.381031],
+                {
+}
+            ).addTo(map_2f079df704eaa51819f394632a86d472);
+        
+    
+            var icon_ad62d3c0638107dd05aa5f198207beb7 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "plane",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_d23b1810e70fb4a43320ffe36fa05662.setIcon(icon_ad62d3c0638107dd05aa5f198207beb7);
+        
+    
+        var popup_73c34fc0ecdcc7a392eee70afb20ebf2 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_7ba11c2ace480070aafdad511c055ff6 = $(`<div id="html_7ba11c2ace480070aafdad511c055ff6" style="width: 100.0%; height: 100.0%;">                 <b>Callsign:</b> LOT4LE<br>                 <b>Altitudine:</b> 22850 ft<br>                 <b>Viteză:</b> 359 kt<br>                 <b>Direcție:</b> 322°                 </div>`)[0];
+                popup_73c34fc0ecdcc7a392eee70afb20ebf2.setContent(html_7ba11c2ace480070aafdad511c055ff6);
+            
+        
+
+        marker_d23b1810e70fb4a43320ffe36fa05662.bindPopup(popup_73c34fc0ecdcc7a392eee70afb20ebf2)
+        ;
+
+        
+    
+    
+            marker_d23b1810e70fb4a43320ffe36fa05662.bindTooltip(
+                `<div>
+                     LOT4LE
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_e61f0951d74e1367690843ee2dd2e3d9 = L.marker(
+                [45.105652, 25.915179],
+                {
+}
+            ).addTo(map_2f079df704eaa51819f394632a86d472);
+        
+    
+            var icon_81c1ed410054303099d3f9cdab976fb8 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "plane",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_e61f0951d74e1367690843ee2dd2e3d9.setIcon(icon_81c1ed410054303099d3f9cdab976fb8);
+        
+    
+        var popup_583b1fdd689e78ebbaaa73e9aeedb014 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_ebf61acd34698ce480ee715bff40e5ef = $(`<div id="html_ebf61acd34698ce480ee715bff40e5ef" style="width: 100.0%; height: 100.0%;">                 <b>Callsign:</b> AHY108<br>                 <b>Altitudine:</b> 38975 ft<br>                 <b>Viteză:</b> 517 kt<br>                 <b>Direcție:</b> 123°                 </div>`)[0];
+                popup_583b1fdd689e78ebbaaa73e9aeedb014.setContent(html_ebf61acd34698ce480ee715bff40e5ef);
+            
+        
+
+        marker_e61f0951d74e1367690843ee2dd2e3d9.bindPopup(popup_583b1fdd689e78ebbaaa73e9aeedb014)
+        ;
+
+        
+    
+    
+            marker_e61f0951d74e1367690843ee2dd2e3d9.bindTooltip(
+                `<div>
+                     AHY108
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_3fa5ec1744cfc39468274012e2e72047 = L.marker(
+                [45.062473, 25.222935],
+                {
+}
+            ).addTo(map_2f079df704eaa51819f394632a86d472);
+        
+    
+            var icon_66c38bfc6293dbf02c10f91351944301 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "plane",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_3fa5ec1744cfc39468274012e2e72047.setIcon(icon_66c38bfc6293dbf02c10f91351944301);
+        
+    
+        var popup_edcb5410fc56017dc49a4ee7561ec4b0 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_deaa8c88589721424a62e2468992d610 = $(`<div id="html_deaa8c88589721424a62e2468992d610" style="width: 100.0%; height: 100.0%;">                 <b>Callsign:</b> <br>                 <b>Altitudine:</b> 36000 ft<br>                 <b>Viteză:</b> 417 kt<br>                 <b>Direcție:</b> 326°                 </div>`)[0];
+                popup_edcb5410fc56017dc49a4ee7561ec4b0.setContent(html_deaa8c88589721424a62e2468992d610);
+            
+        
+
+        marker_3fa5ec1744cfc39468274012e2e72047.bindPopup(popup_edcb5410fc56017dc49a4ee7561ec4b0)
+        ;
+
+        
+    
+    
+            marker_3fa5ec1744cfc39468274012e2e72047.bindTooltip(
+                `<div>
+                     
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_e2563155be22b3b7cd29f1f03036944e = L.marker(
+                [44.591263, 25.574995],
+                {
+}
+            ).addTo(map_2f079df704eaa51819f394632a86d472);
+        
+    
+            var icon_8a19734f8d71f67f45aa35d0f9d2c78c = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "plane",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_e2563155be22b3b7cd29f1f03036944e.setIcon(icon_8a19734f8d71f67f45aa35d0f9d2c78c);
+        
+    
+        var popup_f903e0bfaf12e886a2619d895f55d5ee = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_67a8a63c8c8eb730ed5d91dd63c97bc9 = $(`<div id="html_67a8a63c8c8eb730ed5d91dd63c97bc9" style="width: 100.0%; height: 100.0%;">                 <b>Callsign:</b> THY83J<br>                 <b>Altitudine:</b> 34000 ft<br>                 <b>Viteză:</b> 441 kt<br>                 <b>Direcție:</b> 323°                 </div>`)[0];
+                popup_f903e0bfaf12e886a2619d895f55d5ee.setContent(html_67a8a63c8c8eb730ed5d91dd63c97bc9);
+            
+        
+
+        marker_e2563155be22b3b7cd29f1f03036944e.bindPopup(popup_f903e0bfaf12e886a2619d895f55d5ee)
+        ;
+
+        
+    
+    
+            marker_e2563155be22b3b7cd29f1f03036944e.bindTooltip(
+                `<div>
+                     THY83J
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_0be4a8dfebc2f7379eccda1e6c04e349 = L.marker(
+                [46.21236, 24.407501],
+                {
+}
+            ).addTo(map_2f079df704eaa51819f394632a86d472);
+        
+    
+            var icon_65a8a654e9ede3b1528c2d6648a6f153 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "plane",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_0be4a8dfebc2f7379eccda1e6c04e349.setIcon(icon_65a8a654e9ede3b1528c2d6648a6f153);
+        
+    
+        var popup_ef86254950963a5caccd195668ecffd3 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_80f8e1c717d692cf0117aad515630f6c = $(`<div id="html_80f8e1c717d692cf0117aad515630f6c" style="width: 100.0%; height: 100.0%;">                 <b>Callsign:</b> <br>                 <b>Altitudine:</b> 40000 ft<br>                 <b>Viteză:</b> 463 kt<br>                 <b>Direcție:</b> 321°                 </div>`)[0];
+                popup_ef86254950963a5caccd195668ecffd3.setContent(html_80f8e1c717d692cf0117aad515630f6c);
+            
+        
+
+        marker_0be4a8dfebc2f7379eccda1e6c04e349.bindPopup(popup_ef86254950963a5caccd195668ecffd3)
+        ;
+
+        
+    
+    
+            marker_0be4a8dfebc2f7379eccda1e6c04e349.bindTooltip(
+                `<div>
+                     
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+</script>
+</html>
