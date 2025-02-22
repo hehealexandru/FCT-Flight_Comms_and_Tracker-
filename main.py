@@ -6,7 +6,7 @@ import webbrowser
 from tkinter import Tk, messagebox, Button, Label, CENTER
 
 base_dir = os.path.abspath(os.path.dirname(__file__))
-dump1090_path = r"C:\Users\alexc\Desktop\projects\Dump1090-main\run-dump1090-SBS.bat"
+dump1090_path = os.path.join(base_dir, "Dump1090-main", "run-dump1090-SBS.bat")
 server_script = os.path.join(base_dir, "server.py")
 dump1090_process = None
 server_process = None
@@ -21,9 +21,7 @@ def check_rtlsdr_connection():
         return False
 
 def update_rtlsdr_status():
-    """
-    Actualizează statusul RTL-SDR în interfață.
-    """
+
     global update_task
     if check_rtlsdr_connection():
         rtlsdr_status_label.config(text="RTL-SDR Conectat", fg="green")
@@ -32,9 +30,7 @@ def update_rtlsdr_status():
     update_task = root.after(1000, update_rtlsdr_status)
 
 def start_dump1090():
-    """
-    Pornește Dump1090 folosind fișierul BAT.
-    """
+
     global dump1090_process
     if dump1090_process is not None and dump1090_process.poll() is None:
         messagebox.showwarning("Avertisment", "Dump1090 rulează deja!")
@@ -46,9 +42,7 @@ def start_dump1090():
         messagebox.showerror("Eroare", f"Eroare la pornirea Dump1090: {e}")
 
 def start_server():
-    """
-    Pornește serverul Flask pentru actualizarea hărții live.
-    """
+
     global server_process
     if server_process is not None and server_process.poll() is None:
         messagebox.showwarning("Avertisment", "Serverul rulează deja!")
@@ -60,9 +54,7 @@ def start_server():
         messagebox.showerror("Eroare", f"Eroare la pornirea serverului Flask: {e}")
 
 def is_dump1090_running():
-    """
-    Verifică dacă Dump1090 rulează verificând disponibilitatea API-ului JSON.
-    """
+
     dump1090_url = "http://127.0.0.1:8080/data/aircraft.json"
     try:
         response = requests.get(dump1090_url, timeout=3)
@@ -71,22 +63,18 @@ def is_dump1090_running():
         return False
 
 def generate_map():
-    """
-    Deschide harta live a avioanelor.
-    """
+
     if not is_dump1090_running():
         messagebox.showwarning("Avertisment", "Dump1090 trebuie să fie pornit pentru a afișa harta!")
         return
 
     try:
-        webbrowser.open("http://127.0.0.1:5000/")  # Deschide pagina web a hărții live
+        webbrowser.open("http://127.0.0.1:5000/")
     except Exception as e:
         messagebox.showerror("Eroare", f"Eroare la deschiderea hărții: {e}")
 
 def close_application():
-    """
-    Închide aplicația grafică și procesele asociate.
-    """
+
     global dump1090_process, server_process, update_task
     try:
         if update_task:

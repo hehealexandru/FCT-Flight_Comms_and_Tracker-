@@ -8,12 +8,12 @@ DUMP1090_URL = "http://127.0.0.1:8080/data/aircraft.json"
 
 @app.route("/")
 def home():
-    """ Returnează pagina hărții """
+
     return send_from_directory(os.path.dirname(__file__), "map.html")
 
 @app.route("/aircraft")
 def get_aircraft():
-    """ Returnează datele avioanelor în timp real """
+
     try:
         response = requests.get(DUMP1090_URL, timeout=5)
         if response.status_code != 200:
@@ -47,7 +47,7 @@ def get_aircraft():
 
 @app.route("/icons/<path:filename>")
 def get_icon(filename):
-    """ Servește fișierele de iconițe """
+
     return send_from_directory("icons", filename)
 
 if __name__ == "__main__":

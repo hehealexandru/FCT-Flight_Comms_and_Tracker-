@@ -4,8 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Harta Live Avioane</title>
-
-    <!-- Biblioteci Leaflet -->
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"/>
 
@@ -26,7 +24,7 @@
             attribution: '&copy; OpenStreetMap contributors'
         }).addTo(map);
 
-        var aircraftMarkers = {};  // Stocăm markerii activi pentru actualizare
+        var aircraftMarkers = {};
 
         function getPlaneIcon(track) {
             return L.divIcon({
@@ -48,7 +46,6 @@
             fetch('/aircraft')
                 .then(response => response.json())
                 .then(data => {
-                    // Ștergem markerii avioanelor care nu mai sunt în detecție
                     Object.keys(aircraftMarkers).forEach(callsign => {
                         if (!data.some(ac => ac.callsign === callsign)) {
                             map.removeLayer(aircraftMarkers[callsign]);
@@ -84,7 +81,7 @@
         }
 
         updateAircraft();
-        setInterval(updateAircraft, 100); // Actualizare la fiecare 5 secunde
+        setInterval(updateAircraft, 100);
     </script>
 </body>
 </html>
