@@ -26,7 +26,7 @@ Is a real-time aircraft tracking project using **RTL-SDR**, **Dump1090**, and **
 
 ### 1️⃣ Prerequisites
 - RTL-SDR (e.g., RTL2832U)
-- [Dump1090]([https://github.com/antirez/dump1090](https://github.com/gvanem/Dump1090))
+- Dump1090 (https://github.com/gvanem/Dump1090)
 - Python 3.8+ installed
 - Git installed
 
