@@ -4,13 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Harta Live Avioane</title>
+
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"/>
 
     <style>
-        #map { height: 100vh; }
+        html, body, #map {
+            height: 100%;
+            width: 100%;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
         .plane-icon {
+            width: 40px;
+            height: 40px;
             transform-origin: center;
+            transition: transform 0.2s ease-in-out;
         }
     </style>
 </head>
@@ -18,7 +28,7 @@
     <div id="map"></div>
 
     <script>
-        var map = L.map('map').setView([44.4268, 26.1025], 8); // București
+        var map = L.map('map').setView([44.4268, 26.1025], 6);
 
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
             attribution: '&copy; OpenStreetMap contributors'
@@ -28,17 +38,12 @@
 
         function getPlaneIcon(track) {
             return L.divIcon({
-                html: `<img src="/icons/plane_icon.png" class="plane-icon" style="
-                    width: 30px;
-                    height: 30px;
-                    background: transparent;
-                    border: none;
+                html: `<img src="/icons/airplane-icon-png-2503.png" class="plane-icon" style="
                     transform: rotate(${track}deg);
-                    filter: drop-shadow(0px 0px 2px rgba(0, 0, 0, 0.5));
                 ">`,
                 className: "",
-                iconSize: [30, 30],
-                iconAnchor: [15, 15]
+                iconSize: [40, 40],
+                iconAnchor: [20, 20]
             });
         }
 
@@ -54,13 +59,13 @@
                     });
 
                     data.forEach(aircraft => {
-                        let { lat, lon, callsign, altitude, speed, track } = aircraft;
+                        let { lat, lon, callsign, icao, altitude, speed, track } = aircraft;
                         if (!lat || !lon) return;
 
-                        let speedKmH = speed !== "N/A" ? (speed * 1.852).toFixed(1) : "N/A"; // Conversie din kt în km/h
-
+                        let speedKmH = speed !== "N/A" ? (speed * 1.852).toFixed(1) : "N/A";
                         let popupContent = `
                             <b>Callsign:</b> ${callsign}<br>
+                            <b>ICAO:</b> ${icao}<br>
                             <b>Altitudine:</b> ${altitude} ft<br>
                             <b>Viteză:</b> ${speed} kt (${speedKmH} km/h)<br>
                             <b>Direcție:</b> ${track}°
