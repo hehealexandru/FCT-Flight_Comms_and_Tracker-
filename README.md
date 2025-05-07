@@ -9,7 +9,6 @@ Is a real-time aircraft tracking project using **RTL-SDR**, **Dump1090**, and **
 ✔️ Displaying aircraft positions on **map.html**  
 ✔️ Flight details (callsign, altitude, speed, heading)    
 ✔️ Automatic position updates  
-✔️ Future expansion to include ATC signal capturing and recording  
 
 ---
 
@@ -19,16 +18,22 @@ Is a real-time aircraft tracking project using **RTL-SDR**, **Dump1090**, and **
 - **HTML/CSS**
 - **Dump1090**
 - **RTL-SDR**
-
+- **ttkbootstrap**
+  
 ---
 
 ## 🛠️ Installation and Setup
 
+- Under development
+  
 ### 1️⃣ Prerequisites
 - RTL-SDR (e.g., RTL2832U)
 - Dump1090 (https://github.com/gvanem/Dump1090)
-- Python 3.8+ installed
+- Python 3.8+ installed (and all the libraries needed)
 - Git installed
+
+  
+### 1️⃣ Prerequisitet
 
 ### 2️⃣ Installing the Project
 Clone the repository:
