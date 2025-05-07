@@ -1,7 +1,9 @@
 import os
 import webbrowser
 import tkinter as tk
-from tkinter import messagebox, Button, Label, CENTER
+from tkinter import messagebox, CENTER
+from ttkbootstrap import Button, Label
+from gui_style import apply_style
 from utils import check_rtlsdr_connection
 from dump1090_control import Dump1090Controller
 from server_control import ServerController
@@ -10,6 +12,7 @@ from server_control import ServerController
 class SDRTrackerApp:
     def __init__(self, root, dump1090_controller, server_controller):
         self.root = root
+        self.style = apply_style(self.root)
         self.root.title("FCT (Flight Communications and Tracker)")
         self.root.geometry("800x600")
 
@@ -22,9 +25,9 @@ class SDRTrackerApp:
 
     def update_rtlsdr_status(self):
         if check_rtlsdr_connection():
-            self.rtlsdr_status_label.config(text="RTL-SDR Conectat", fg="green")
+            self.rtlsdr_status_label.config(text="RTL-SDR Conectat", bootstyle="success")
         else:
-            self.rtlsdr_status_label.config(text="RTL-SDR Lipsă", fg="red")
+            self.rtlsdr_status_label.config(text="RTL-SDR Lipsă", bootstyle="danger")
         self.update_task = self.root.after(1000, self.update_rtlsdr_status)
 
     def start_dump1090(self):
@@ -54,10 +57,10 @@ class SDRTrackerApp:
             self.root.destroy()
 
     def create_widgets(self):
-        Button(self.root, text="Pornește Dump1090", command=self.start_dump1090, width=40, height=3).place(relx=0.5, rely=0.25, anchor=CENTER)
-        Button(self.root, text="Pornește Server Flask", command=self.start_server, width=40, height=3).place(relx=0.5, rely=0.35, anchor=CENTER)
-        Button(self.root, text="Afișează Harta Live", command=self.generate_map, width=40, height=3).place(relx=0.5, rely=0.45, anchor=CENTER)
-        Button(self.root, text="Închide aplicația", command=self.close_application, width=40, height=3).place(relx=0.5, rely=0.55, anchor=CENTER)
+        Button(self.root, text="Pornește Dump1090", command=self.start_dump1090, width=40, bootstyle="info", padding=(0,10)).place(relx=0.5, rely=0.25, anchor=CENTER)
+        Button(self.root, text="Pornește Server Flask", command=self.start_server, width=40, bootstyle="info", padding=(0,10)).place(relx=0.5, rely=0.35, anchor=CENTER)
+        Button(self.root, text="Afișează Harta Live", command=self.generate_map, width=40, bootstyle="success", padding=(0,10)).place(relx=0.5, rely=0.45, anchor=CENTER)
+        Button(self.root, text="Închide aplicația", command=self.close_application, width=40, bootstyle="danger", padding=(0,10)).place(relx=0.5, rely=0.55, anchor=CENTER)
 
-        self.rtlsdr_status_label = Label(self.root, text="Verificare RTL-SDR...", fg="blue", font=("Helvetica", 12))
+        self.rtlsdr_status_label = Label(self.root, text="Verificare RTL-SDR...", bootstyle="warning", font=("Helvetica", 12))
         self.rtlsdr_status_label.place(relx=0.98, rely=0.98, anchor="se")
