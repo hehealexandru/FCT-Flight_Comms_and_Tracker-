@@ -33,9 +33,9 @@ Is a real-time aircraft tracking project using **RTL-SDR**, **Dump1090**, and **
 - Git installed
 
   
-### 1️⃣ Prerequisitet
+### 3️⃣
 
-### 2️⃣ Installing the Project
+### 2️⃣Installing the Project
 Clone the repository:
 ```sh
 git clone https://github.com/username/FlightComms_and_Tracker.git
