@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="FCT.png" alt="FCT Logo" width="500"/>
+</p>
+
 # ✈️ **FCT** (Flight Comms and Tracker)
 
 Is a real-time aircraft tracking project using **RTL-SDR**, **Dump1090**, and **Flask**. The application allows users to monitor aircraft via an interactive web interface, displaying details such as altitude, speed, and heading.

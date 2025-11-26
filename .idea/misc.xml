@@ -3,5 +3,5 @@
   <component name="Black">
     <option name="sdkName" value="Python 3.13 (ADSB_Receptor) (2)" />
   </component>
-  <component name="ProjectRootManager" version="2" project-jdk-name="Python 3.13 (PlaneTracker)" project-jdk-type="Python SDK" />
+  <component name="ProjectRootManager" version="2" project-jdk-name="Python 3.11 (FlightComms_and_Tracker)" project-jdk-type="Python SDK" />
 </project>

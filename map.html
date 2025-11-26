@@ -20,7 +20,6 @@
             width: 40px;
             height: 40px;
             transform-origin: center;
-            transition: transform 0.2s ease-in-out;
         }
     </style>
 </head>
@@ -28,19 +27,19 @@
     <div id="map"></div>
 
     <script>
-        var map = L.map('map').setView([44.4268, 26.1025], 6);
+        const map = L.map('map').setView([44.4268, 26.1025], 6);
 
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
             attribution: '&copy; OpenStreetMap contributors'
         }).addTo(map);
 
-        var aircraftMarkers = {};
+        const aircraftMarkers = {};
 
         function getPlaneIcon(track) {
             return L.divIcon({
-                html: `<img src="/icons/airplane-icon-png-2503.png" class="plane-icon" style="
-                    transform: rotate(${track}deg);
-                ">`,
+                html: `<img src="icons/airplane-icon-png-2503.png"
+                           class="plane-icon"
+                           style="transform: rotate(${track}deg);">`,
                 className: "",
                 iconSize: [40, 40],
                 iconAnchor: [20, 20]
@@ -49,44 +48,57 @@
 
         function updateAircraft() {
             fetch('/aircraft')
-                .then(response => response.json())
+                .then(res => res.json())
                 .then(data => {
-                    Object.keys(aircraftMarkers).forEach(callsign => {
-                        if (!data.some(ac => ac.callsign === callsign)) {
+                    const active = new Set(data.map(ac => ac.callsign));
+                    for (const callsign in aircraftMarkers) {
+                        if (!active.has(callsign)) {
                             map.removeLayer(aircraftMarkers[callsign]);
                             delete aircraftMarkers[callsign];
                         }
-                    });
+                    }
 
-                    data.forEach(aircraft => {
-                        let { lat, lon, callsign, icao, altitude, speed, track } = aircraft;
+                    data.forEach(ac => {
+                        const { lat, lon, callsign, icao, altitude, speed, track } = ac;
                         if (!lat || !lon) return;
 
-                        let speedKmH = speed !== "N/A" ? (speed * 1.852).toFixed(1) : "N/A";
-                        let popupContent = `
+                        const speedKmH = speed !== "N/A" ? (speed * 1.852).toFixed(1) : "N/A";
+
+                        const popupHtml = `
                             <b>Callsign:</b> ${callsign}<br>
                             <b>ICAO:</b> ${icao}<br>
                             <b>Altitudine:</b> ${altitude} ft<br>
                             <b>Viteză:</b> ${speed} kt (${speedKmH} km/h)<br>
                             <b>Direcție:</b> ${track}°
                         `;
-
                         if (aircraftMarkers[callsign]) {
-                            aircraftMarkers[callsign].setLatLng([lat, lon]);
-                            aircraftMarkers[callsign].setIcon(getPlaneIcon(track));
-                            aircraftMarkers[callsign].bindPopup(popupContent);
+                            const marker = aircraftMarkers[callsign];
+                            marker.setLatLng([lat, lon]);
+
+                            if (marker.options.track !== track) {
+                                marker.setIcon(getPlaneIcon(track));
+                                marker.options.track = track;
+                            }
+                            if (marker.getPopup()) {
+                                marker.getPopup().setContent(popupHtml);
+                            }
+
                         } else {
-                            aircraftMarkers[callsign] = L.marker([lat, lon], {
-                                icon: getPlaneIcon(track)
-                            }).bindPopup(popupContent).addTo(map);
+                            const marker = L.marker([lat, lon], {
+                                icon: getPlaneIcon(track),
+                                track: track
+                            }).addTo(map);
+
+                            marker.bindPopup(popupHtml);
+                            aircraftMarkers[callsign] = marker;
                         }
                     });
                 })
-                .catch(error => console.error("Eroare la obținerea datelor aeronavelor:", error));
+                .catch(err => console.error("Eroare la obținerea datelor:", err));
         }
 
         updateAircraft();
-        setInterval(updateAircraft, 100);
+        setInterval(updateAircraft, 1000);
     </script>
 </body>
 </html>

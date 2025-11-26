@@ -50,6 +50,9 @@ def get_icon(filename):
     return send_from_directory("icons", filename)
 
 if __name__ == "__main__":
-    context = ('certificat.pem', 'cheie_privata.pem')
-    app.run(debug=True, host="0.0.0.0", port=5000, ssl_context=context)
+    app.run(
+        debug=True,
+        host="127.0.0.1",
+        port=5000
+    )
 
